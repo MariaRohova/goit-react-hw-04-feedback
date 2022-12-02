@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from './Button.styled';
 
-const FeedbackOptions = ({ goodIncrement, badIncrement, neutralIncrement }) => {
+const FeedbackOptions = ({ onLeaveFeedback }) => {
   return (
     <Button>
-      <button type="button" onClick={goodIncrement}>
+      <button type="button" onClick={() => onLeaveFeedback('good')}>
         Good
       </button>
-      <button type="button" onClick={neutralIncrement}>
+      <button type="button" onClick={() => onLeaveFeedback('neutral')}>
         Neutral
       </button>
-      <button type="button" onClick={badIncrement}>
+      <button type="button" onClick={() => onLeaveFeedback('bad')}>
         Bad
       </button>
     </Button>

@@ -9,21 +9,30 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
+  const onFeedback = name => {
+    switch (name) {
+      case 'good': {
+        setGood(prev => prev + 1);
+        break;
+      }
+      case 'neutral': {
+        setNeutral(prev => prev + 1);
+        break;
+      }
+      case 'bad': {
+        setBad(prev => prev + 1);
+        break;
+      }
+      default:
+        return;
+    }
+  };
+
+
   return (
     <>
       <Section title={'Please live feedback'}>
-        <FeedbackOptions
-          badIncrement={() => {
-            setBad(prevState => prevState + 1);
-          }}
-          goodIncrement={() => {
-            setGood(prevState => prevState + 1);
-          }}
-          neutralIncrement={() => {
-            setNeutral(prevState => prevState + 1);
-          }}
-      
-        />
+        <FeedbackOptions onLeaveFeedback={onFeedback} />
       </Section>
       <Section title={'Statistics'}>
         {good > 0 || bad > 0 || neutral > 0 ? (
